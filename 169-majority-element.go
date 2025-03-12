@@ -20,21 +20,18 @@ import (
 )
 
 func majorityElement(nums []int) int {
-	countNums := map[int]int{}
-
+	numberMaxCount, count := nums[0], 0
 	for _, num := range nums {
-		countNums[num] += 1
-	}
-
-	indexMaxCount := 0
-
-	for index, numCount := range countNums {
-		if numCount > countNums[indexMaxCount] {
-			indexMaxCount = index
+		if count == 0 {
+			numberMaxCount = num
+		}
+		if numberMaxCount == num {
+			count += 1
+		} else {
+			count -= 1
 		}
 	}
-
-	return indexMaxCount
+	return numberMaxCount
 }
 
 func main() {
