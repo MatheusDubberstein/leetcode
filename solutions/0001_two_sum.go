@@ -17,13 +17,9 @@
 //
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
-package main
+package solutions
 
-import (
-	"fmt"
-)
-
-func twoSum(nums []int, target int) []int {
+func TwoSum(nums []int, target int) []int {
 	numbers := make(map[int]int)
 	var indexResult []int
 	for index, x := range nums {
@@ -34,20 +30,4 @@ func twoSum(nums []int, target int) []int {
 		numbers[x] = index
 	}
 	return indexResult
-}
-
-func main() {
-	var result []int
-
-	nums1 := []int{2, 7, 11, 15}
-	result = twoSum(nums1, 9)
-	fmt.Println(result)
-
-	nums2 := []int{3, 2, 4}
-	result = twoSum(nums2, 6)
-	fmt.Println(result)
-
-	nums3 := []int{3, 3}
-	result = twoSum(nums3, 6)
-	fmt.Println(result)
 }
