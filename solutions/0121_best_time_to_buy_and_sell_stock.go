@@ -1,3 +1,5 @@
+package solutions
+
 // You are given an array prices where prices[i] is the price of a given stock on the ith day.
 //
 // You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
@@ -18,13 +20,11 @@
 // Output: 0
 // Explanation: In this case, no transactions are done and the max profit = 0.
 
-package main
+// import (
+// 	"fmt"
+// )
 
-import (
-	"fmt"
-)
-
-func maxProfit(prices []int) int {
+func MaxProfit(prices []int) int {
 	bestSell := 0
 	bestBuy := prices[0]
 
@@ -41,14 +41,14 @@ func maxProfit(prices []int) int {
 	return bestSell
 }
 
-func main() {
-	prices1 := []int{7, 1, 5, 3, 6, 4}
-	prices2 := []int{7, 6, 4, 3, 1}
-	prices3 := []int{2, 1, 2, 0, 1}
-	result1 := maxProfit(prices1)
-	result2 := maxProfit(prices2)
-	result3 := maxProfit(prices3)
-	fmt.Println(result1)
-	fmt.Println(result2)
-	fmt.Println(result3)
-}
+// func main() {
+// 	prices1 := []int{7, 1, 5, 3, 6, 4}
+// 	prices2 := []int{7, 6, 4, 3, 1}
+// 	prices3 := []int{2, 1, 2, 0, 1}
+// 	result1 := maxProfit(prices1)
+// 	result2 := maxProfit(prices2)
+// 	result3 := maxProfit(prices3)
+// 	fmt.Println(result1)
+// 	fmt.Println(result2)
+// 	fmt.Println(result3)
+// }

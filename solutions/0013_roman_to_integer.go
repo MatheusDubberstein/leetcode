@@ -1,3 +1,5 @@
+package solutions
+
 // Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 //
 // Symbol       Value
@@ -32,11 +34,6 @@
 // Input: s = "MCMXCIV"
 // Output: 1994
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-package main
-
-import (
-	"fmt"
-)
 
 var romanNumbers = map[string]int{
 	"I": 1,
@@ -48,7 +45,7 @@ var romanNumbers = map[string]int{
 	"M": 1000,
 }
 
-func romanToInt(s string) int {
+func RomanToInt(s string) int {
 	integerNumber := 0
 	for index, letter := range s {
 
@@ -67,14 +64,14 @@ func romanToInt(s string) int {
 	return integerNumber
 }
 
-func main() {
-	var result int
-	result = romanToInt("IIV")
-	fmt.Println(result)
-	result = romanToInt("III")
-	fmt.Println(result)
-	result = romanToInt("LVIII")
-	fmt.Println(result)
-	result = romanToInt("MCMXCIV")
-	fmt.Println(result)
-}
+// func main() {
+// 	var result int
+// 	result = romanToInt("IIV")
+// 	fmt.Println(result)
+// 	result = romanToInt("III")
+// 	fmt.Println(result)
+// 	result = romanToInt("LVIII")
+// 	fmt.Println(result)
+// 	result = romanToInt("MCMXCIV")
+// 	fmt.Println(result)
+// }

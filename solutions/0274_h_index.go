@@ -12,14 +12,13 @@
 //
 // Input: citations = [1,3,1]
 // Output: 1
-package main
+package solutions
 
 import (
-	"fmt"
 	"sort"
 )
 
-func hIndex(citations []int) int {
+func HIndex(citations []int) int {
 	sort.Sort(sort.Reverse(sort.IntSlice(citations)))
 	hIndex := 1
 	for _, x := range citations {
@@ -30,13 +29,13 @@ func hIndex(citations []int) int {
 	return hIndex - 1
 }
 
-func main() {
-	var result int
-	numbers1 := []int{3, 0, 6, 1, 5}
-	result = hIndex(numbers1)
-	fmt.Println(result)
-
-	numbers2 := []int{1, 3, 1}
-	result = hIndex(numbers2)
-	fmt.Println(result)
-}
+// func main() {
+// 	var result int
+// 	numbers1 := []int{3, 0, 6, 1, 5}
+// 	result = hIndex(numbers1)
+// 	fmt.Println(result)
+//
+// 	numbers2 := []int{1, 3, 1}
+// 	result = hIndex(numbers2)
+// 	fmt.Println(result)
+// }

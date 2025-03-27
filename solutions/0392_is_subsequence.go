@@ -20,13 +20,9 @@
 // 0 <= t.length <= 104
 // s and t consist only of lowercase English letters.
 
-package main
+package solutions
 
-import (
-	"fmt"
-)
-
-func isSubsequence(s string, t string) bool {
+func IsSubsequence(s string, t string) bool {
 	indexS := 0
 	if len(s) == 0 {
 		return true
@@ -44,14 +40,14 @@ func isSubsequence(s string, t string) bool {
 	return indexS == len(s)
 }
 
-func main() {
-	var result bool
-	result = isSubsequence("abc", "ahbgdc")
-	fmt.Println(result)
-	result = isSubsequence("axc", "ahbgdc")
-	fmt.Println(result)
-	result = isSubsequence("", "ahbgdc")
-	fmt.Println(result)
-	result = isSubsequence("b", "abc")
-	fmt.Println(result)
-}
+// func main() {
+// 	var result bool
+// 	result = isSubsequence("abc", "ahbgdc")
+// 	fmt.Println(result)
+// 	result = isSubsequence("axc", "ahbgdc")
+// 	fmt.Println(result)
+// 	result = isSubsequence("", "ahbgdc")
+// 	fmt.Println(result)
+// 	result = isSubsequence("b", "abc")
+// 	fmt.Println(result)
+// }

@@ -1,7 +1,6 @@
-package main
+package solutions
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
 )
@@ -14,7 +13,7 @@ func reverseString(s string) string {
 	return result
 }
 
-func isPalindrome(s string) bool {
+func IsPalindrome(s string) bool {
 	alphaNumericRegex := regexp.MustCompile("[^a-zA-Z0-9]+")
 
 	s = strings.ToLower(alphaNumericRegex.ReplaceAllString(s, ""))
@@ -22,14 +21,14 @@ func isPalindrome(s string) bool {
 	return reverseS == s
 }
 
-func main() {
-	var result bool
-	result = isPalindrome("A man, a plan, a canal: Panama")
-	fmt.Println(result)
-
-	result = isPalindrome("race a car")
-	fmt.Println(result)
-
-	result = isPalindrome(" ")
-	fmt.Println(result)
-}
+// func main() {
+// 	var result bool
+// 	result = isPalindrome("A man, a plan, a canal: Panama")
+// 	fmt.Println(result)
+//
+// 	result = isPalindrome("race a car")
+// 	fmt.Println(result)
+//
+// 	result = isPalindrome(" ")
+// 	fmt.Println(result)
+// }
