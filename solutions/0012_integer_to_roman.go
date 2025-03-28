@@ -16,10 +16,6 @@
 // Given an integer, convert it to a Roman numeral.
 package solutions
 
-import (
-	"fmt"
-)
-
 var symbols = map[int]string{
 	1:    "I",
 	4:    "IV",
@@ -49,28 +45,28 @@ func getFirstDigit(num int) int {
 }
 
 func test(number int, romanString string) string {
+	if number == 0 {
+		return romanString
+	}
 	for _, x := range symbolsOrder {
-		if x < number {
-			fmt.Println("number: ", number)
+		if x <= number {
 			firstDigit := getFirstDigit(number)
 			if firstDigit == 4 || firstDigit == 9 {
-				fmt.Println(symbols[number])
 				_, ok := symbols[number]
 				if ok {
 					romanString = romanString + symbols[number]
-					break
+
+					return test(0, romanString)
 				}
 				symbl := symbols[number+1]
 				romanString = romanString + symbols[x] + "" + symbl
-				test(number-(number+1-x), romanString)
-				break
+				return test(number-(number+1-x), romanString)
 			}
 
 			numberResult := number - x
 			romanString = romanString + symbols[x]
-			test(numberResult, romanString)
+			return test(numberResult, romanString)
 
-			break
 		}
 	}
 	return romanString
@@ -79,6 +75,5 @@ func test(number int, romanString string) string {
 func IntToRoman(num int) string {
 	romanString := ""
 	result := test(num, romanString)
-	fmt.Println("O resultado é ", result)
-	return "IV"
+	return result
 }
