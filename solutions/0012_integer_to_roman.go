@@ -17,22 +17,22 @@
 package solutions
 
 var symbols = map[int]string{
-	1:    "I",
-	4:    "IV",
-	5:    "V",
-	9:    "IX",
-	10:   "X",
-	40:   "XL",
-	50:   "L",
-	90:   "XC",
-	100:  "C",
-	400:  "CD",
-	500:  "D",
-	900:  "CM",
 	1000: "M",
+	900:  "CM",
+	500:  "D",
+	400:  "CD",
+	100:  "C",
+	90:   "XC",
+	50:   "L",
+	40:   "XL",
+	10:   "X",
+	9:    "IX",
+	5:    "V",
+	4:    "IV",
+	1:    "I",
 }
 
-var symbolsOrder = []int{1000, 500, 100, 50, 10, 5, 1}
+var symbolsOrder = []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
 
 func getFirstDigit(num int) int {
 	if num < 0 {
@@ -50,19 +50,6 @@ func test(number int, romanString string) string {
 	}
 	for _, x := range symbolsOrder {
 		if x <= number {
-			firstDigit := getFirstDigit(number)
-			if firstDigit == 4 || firstDigit == 9 {
-				_, ok := symbols[number]
-				if ok {
-					romanString = romanString + symbols[number]
-
-					return test(0, romanString)
-				}
-				symbl := symbols[number+1]
-				romanString = romanString + symbols[x] + "" + symbl
-				return test(number-(number+1-x), romanString)
-			}
-
 			numberResult := number - x
 			romanString = romanString + symbols[x]
 			return test(numberResult, romanString)
