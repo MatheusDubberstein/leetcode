@@ -34,16 +34,6 @@ var symbols = map[int]string{
 
 var symbolsOrder = []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
 
-func getFirstDigit(num int) int {
-	if num < 0 {
-		num = -num
-	}
-	for num >= 10 {
-		num = num / 10
-	}
-	return num
-}
-
 func test(number int, romanString string) string {
 	if number == 0 {
 		return romanString
