@@ -16,33 +16,30 @@
 // Output: 1
 package solutions
 
-func absInt(number int) int {
-	if number < 0 {
-		return -number
-	}
-	return number
-}
-
-func checkMaxArea(height []int, number int, numberIndex int) int {
-	maxArea := 0
-	for index, h := range height {
-		if number <= h && index != numberIndex {
-			area := absInt((numberIndex - index) * number)
-			if area >= maxArea {
-				maxArea = area
-			}
-		}
-	}
-	return maxArea
-}
-
 func ContainerWithMostWater(height []int) int {
+	leftIndex := 0
+	rightIndex := 0
 	maxArea := 0
-	for index, h := range height {
-		maxNumber := checkMaxArea(height, h, index)
-		if maxNumber >= maxArea {
-			maxArea = maxNumber
+	for index, currentHeight := range height {
+		area := 0
+		currIndex := index - 1
+		leftHeight := height[leftIndex]
+		rightHeight := height[rightIndex]
+		if currentHeight > rightHeight {
+			area = rightHeight*currIndex - rightIndex
+		} else if currentHeight > leftHeight {
+			area = leftHeight*currIndex - leftIndex
 		}
+		if leftHeight > currentHeight {
+			leftIndex = currIndex
+		}
+		if rightHeight < currentHeight {
+			rightIndex = currIndex
+		}
+		if area > maxArea {
+			maxArea = area
+		}
+
 	}
 	return maxArea
 }
