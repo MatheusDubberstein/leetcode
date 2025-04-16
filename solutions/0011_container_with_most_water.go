@@ -16,30 +16,50 @@
 // Output: 1
 package solutions
 
+import "fmt"
+
 func ContainerWithMostWater(height []int) int {
 	leftIndex := 0
 	rightIndex := 0
 	maxArea := 0
+	lastHeight := height[len(height)-1]
 	for index, currentHeight := range height {
-		area := 0
-		currIndex := index - 1
+		areaLeft := 0
+		areaRight := 0
 		leftHeight := height[leftIndex]
 		rightHeight := height[rightIndex]
-		if currentHeight > rightHeight {
-			area = rightHeight*currIndex - rightIndex
-		} else if currentHeight > leftHeight {
-			area = leftHeight*currIndex - leftIndex
-		}
-		if leftHeight > currentHeight {
-			leftIndex = currIndex
-		}
-		if rightHeight < currentHeight {
-			rightIndex = currIndex
-		}
-		if area > maxArea {
-			maxArea = area
+
+		if currentHeight > lastHeight {
+			areaRight = lastHeight * (len(height) - index - 1)
+		} else {
+			areaRight = currentHeight * (len(height) - index - 1)
 		}
 
+		if currentHeight > leftHeight {
+			areaLeft = leftHeight * (leftIndex - index)
+		} else {
+			areaLeft = currentHeight * (index - leftIndex)
+		}
+		if areaRight > maxArea {
+			maxArea = areaRight
+			rightIndex = len(height) - 1
+			leftIndex = index
+		}
+		if areaLeft > maxArea {
+			maxArea = areaLeft
+			rightIndex = index
+		}
+		if leftHeight > currentHeight {
+			leftIndex = index
+		}
+
+		if currentHeight > rightHeight {
+			rightIndex = index
+		}
+		fmt.Println("AreaLeft: ", areaLeft, "areaRight: ", areaRight)
+		fmt.Println("currentHeight: ", currentHeight, "leftHeight: ", leftHeight, "rightHeight: ", rightHeight)
+		// fmt.Println("leftIndex: ", leftIndex, "rightIndex: ", rightIndex)
 	}
+
 	return maxArea
 }
